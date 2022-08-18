@@ -1,0 +1,65 @@
+<!-- html/css angelehnt an: https://webukatu.com/wordpress/blog/27277/#i -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form name="calculator">
+        <table>
+ 
+            <tr>
+                <td colspan="4">
+                    <div class="display">
+                        <div>
+                            <input class="history" type="text" value="" disabled>
+                        </div>
+                        <div>
+                            <input class="output" type="text" value="" disabled>
+                        </div>
+                    </div>
+                </td>
+            </tr> 
+
+            <tr>
+                <td><input class="num" type="button" value="7"></td>
+                <td><input class="num" type="button" value="8"></td>
+                <td><input class="num" type="button" value="9"></td>
+                <td><input class="operator" type="button" value="÷"></td>
+            </tr>
+
+            <tr>
+                <td><input class="num" type="button" value="4"></td>
+                <td><input class="num" type="button" value="5"></td>
+                <td><input class="num" type="button" value="6"></td>
+                <td><input class="operator" type="button" value="×"></td>
+            </tr>
+
+            <tr>
+                <td><input class="num" type="button" value="1"></td>
+                <td><input class="num" type="button" value="2"></td>
+                <td><input class="num" type="button" value="3"></td>
+                <td><input class="operator" type="button" value="−"></td>
+            </tr>
+
+            <tr>
+                <td><input class="num" type="button" value="0"></td>
+                <td><input class="cancel" type="button" value="C"></td>
+                <td><input class="equal" type="button" value="="></td>
+                <td><input class="operator" type="button" value="＋"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="index.js" charset="utf-8"></script>
+</body>
+
+</html>
