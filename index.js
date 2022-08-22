@@ -1,9 +1,9 @@
 //text overflow poorly handled
 //no negative numbers input
 
-let cur_number = '';
-let prev_number = '';
-let cur_operator = '';
+let curNumber = '';
+let prevNumber = '';
+let curOperator = '';
 //wird nach Ergebnisausgabe mit = direkt eine Nummer eingegeben, muss das letzte Ergebnis ueberschrieben werden
 let overwrite = false;
 
@@ -16,40 +16,40 @@ const operatorMap = new Map([
 
 function numberInputHandler(n) {
     if (overwrite) {
-        prev_number = '';
+        prevNumber = '';
         overwrite = false;
     }
-    cur_number += n;
-    changeDisplayValue(cur_number);
+    curNumber += n;
+    changeDisplayValue(curNumber);
 
 }
 
 function operatorInputHandler(o) {
     overwrite = false;
 
-    if (cur_number === '' && prev_number !== '') {
-        changeHistoryValue(prev_number, getMapKeyByValue(o));
+    if (curNumber === '' && prevNumber !== '') {
+        changeHistoryValue(prevNumber, getMapKeyByValue(o));
     }
 
-    if (prev_number === '' && cur_number !== '') {
-        prev_number = cur_number;
-        cur_number = '';
-        changeHistoryValue(prev_number, getMapKeyByValue(o));
+    if (prevNumber === '' && curNumber !== '') {
+        prevNumber = curNumber;
+        curNumber = '';
+        changeHistoryValue(prevNumber, getMapKeyByValue(o));
     }
 
 
-    if (cur_number !== '' && prev_number !== '') {
-        calculate(prev_number + cur_operator + cur_number);
-        changeHistoryValue(prev_number, getMapKeyByValue(o));
+    if (curNumber !== '' && prevNumber !== '') {
+        calculate(prevNumber + curOperator + curNumber);
+        changeHistoryValue(prevNumber, getMapKeyByValue(o));
     }
 
-    cur_operator = o;
+    curOperator = o;
 }
 
 function equalsHandler() {
-    if (cur_operator !== '' && cur_number !== '' && prev_number !== '') {
+    if (curOperator !== '' && curNumber !== '' && prevNumber !== '') {
         changeHistoryValue('', '');
-        calculate(prev_number + cur_operator + cur_number);
+        calculate(prevNumber + curOperator + curNumber);
         overwrite = true;
     }
 }
@@ -60,8 +60,8 @@ function calculate(calc) {
     console.log("RESULT: " + result);
     changeDisplayValue(result);
 
-    cur_number = '';
-    prev_number = result;
+    curNumber = '';
+    prevNumber = result;
 }
 
 function buttonAnimation(button) {
@@ -76,17 +76,17 @@ function getMapKeyByValue(value) {
 }
 
 function cancel() {
-    cur_number = '';
-    prev_number = '';
-    cur_operator = '';
+    curNumber = '';
+    prevNumber = '';
+    curOperator = '';
     changeDisplayValue('');
     changeHistoryValue('', '');
 }
 
 function removeLastInput() {
-    if (cur_number !== '') {
-        cur_number = cur_number.slice(0, -1);
-        changeDisplayValue(cur_number);
+    if (curNumber !== '') {
+        curNumber = curNumber.slice(0, -1);
+        changeDisplayValue(curNumber);
     }
 }
 
@@ -124,8 +124,8 @@ document.addEventListener("keydown", function (event) {
 
     if (event.key === '*' || event.key === '/' || event.key === '+' || event.key === '-') {
         operatorInputHandler(event.key);
-        var op_var = getMapKeyByValue(event.key);
-        buttonAnimation(document.querySelector("input[class='operator'][value='" + op_var + "']"));
+        var opVar = getMapKeyByValue(event.key);
+        buttonAnimation(document.querySelector("input[class='operator'][value='" + opVar + "']"));
     }
 
     if (event.key === '=' || event.key === 'Enter') {
